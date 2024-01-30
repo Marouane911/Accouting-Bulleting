@@ -63,6 +63,3 @@ Le "Accounting Bulletin" est une plateforme web novatrice conçue pour offrir au
 Ce projet vise à fournir aux entreprises un outil visuel intuitif, favorisant une évaluation rapide et informée de leurs performances publicitaires. En facilitant la prise de décision stratégique, le "Accounting Bulletin" offre une solution efficace pour optimiser les stratégies financières.
 
 ---
-
-
-![Uploading Capture d’écran 2024-01-30 à 17.02.29.png…]()
