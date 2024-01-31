@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting Bulletin</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Styles généraux du corps de la page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-color: rgb(9, 18, 49);
+        }
+
+        /* Styles pour l'en-tête avec une image de fond */
+        header {
+            background-image: url('https://img.freepik.com/photos-gratuite/ecran-graphique-dessus-qui-dit-mot-financier-dessus_188544-27324.jpg?w=1800&t=st=1706553395~exp=1706553995~hmac=cf997aa9e771c36863ddfa1875e3692e1cae73e938cd3fcddea6b83c109f1d16');
+            background-size: cover; /* Image couvre le Header */
+            background-position: center;
+            height: 180px; /* Hauteur fixe pour le Header */
+            width: 100%;
+            margin-bottom: 100px;
+        }
+
+        /* Positionnement pour le déroulé des mois */
+        .period {
+            text-align: center;
+            margin-top: -20px;
+        }
+
+        .selection-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Écart entre les éléments */
+            margin-bottom: 20px;
+        }
+
+        /* Style des Titres "Advertising" & "Turnover" */
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 150px;
+        }
+
+        .column {
+            width: 48%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .column h1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            font-size: 35px;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            margin-top: 2px;
+        }
+
+        /* Mini-titre devant et sur chaque input */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        /* Formulaire du Budget et Chiffre d'affaire de l'user */
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style Bouton */
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        button {
+            background-color: rgb(0, 136, 255);
+            box-shadow: 0 0 50px 5px rgba(0, 242, 255, 0.196);
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all .3s;
+            animation: floatAnimation 2s infinite;
+        }
+
+        /* Animation flottante du bouton "Get My Statistics" */
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        button:hover {
+            font-size: 21px;
+            transition: all .3s;
+            letter-spacing: 0.5px;
+            border: 1.5px solid rgb(0, 136, 255);
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 136, 255);
+            box-shadow: 0 0 50px 5px rgba(0, 115, 255, 0.6);
+        }
+
+    </style>
+</head>
+
+<header>
+</header>
+
+
+<body>
+
+    <!-- Section pour sélectionner la période -->
+    <div class="period">        
+        <!-- Selection du mois de début -->
+        <div class="selection-row">
+            <label for="startMonth">Start Month :</label>
+            <select id="startMonth">
+                <!-- Option pour les mois -->
+                <option value="0">January</option>
+                <option value="1">Febuary</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+        </div>
+
+            <!-- Selection du mois de fin -->
+        <div class="selection-row">
+            <label for="endMonth">End Month :</label>
+            <select id="endMonth">
+                <!-- Option pour les mois -->
+                <option value="0">January</option>
+                <option value="1">Febuary</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Contenu du formulaire -->
+    <div class="form-container">
+        <!-- Colonne pour le Budget Publicitaire -->
+        <div class="column">
+            <h1 style="background-color: red;box-shadow: 0 0 50px 5px rgba(255, 0, 0, 0.196);">ADVERTISING BUDGET</h1>
+            <form action="/submit" method="post">
+                <!-- Champs pour entrer le Budget Publicitaire -->
+                <label for="adBudgetData">ADVERTISING BUDGET :</label>
+                <input type="number" id="adBudgetData" placeholder="Entrez les valeurs" />
+
+            </form>
+        </div>
+
+        <div class="column">
+            <!-- Colonne pour le Chiffre d'Affaire -->
+            <h1 style="background-color: rgb(0, 255, 55);box-shadow: 0 0 50px 5px rgba(0, 255, 42, 0.196);">TURNOVER</h1>
+            <form action="/submit" method="post">
+                <!-- Champs pour entrer le Chiffre d'Affaire -->
+                <label for="turnoverData">TURNOVER :</label>
+                <input type="number" id="turnoverData" placeholder="Entrez les valeurs" />
+
+            </form>
+        </div>
+    </div>
+    <!-- Bouton pour entrainer les donner et afficher le graphique en fonction des données entrées -->
+    <div class="button-container">
+        <button onclick="drawChart()">GET MY STATISTICS</button>
+    </div>
+
+    <!-- Affichage et Paramètre du Graphique -->
+    <canvas id="myChart" width="300" height="150"></canvas>
+
+    <!-- Affichage des résultats moyens -->
+    <div id="averageCA" style="color: rgb(0, 255, 55); text-align: center"></div>
+    <div id="averageBudget" style="color: red; margin-top : 15px; margin-bottom : 30px; text-align: center"></div>
+
+    <!-- Importation du script JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Bas de page -->
+    <footer style="text-align: center; padding: 20px; background-color: rgb(9, 18, 49); color: white;">
+        <p>Made by <strong>Marouane Keteb</strong>.</p>
+        <p>Made in <strong>2024</strong>.</p>
+    </footer>
+
+</body>
+</html>
